@@ -1,15 +1,13 @@
 const express = require('express');
 const app = express();
-
-const area = require('./square').area;
-const perimeter = require('./square').perimeter;
-
-console.log('area(5):', area(5));
-console.log('perimeter(5):', perimeter(5));
+const wiki = require('./wiki');
 
 app.get('/', (req, res) => {
   res.send('hello expresso');
 });
+
+// route requests to /wiki to wiki router
+app.use('/wiki', wiki);
 
 app.listen(3000, () => {
   console.log('your express app is running on port 3000');
