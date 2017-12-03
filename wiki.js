@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('wiki homepage');
+  res.sendFile(`${__dirname}/views/wiki-home.html`);
 });
 
 router.get('/about', (req, res) => {
-  res.send('about wiki page');
+  res.sendFile(`${__dirname}/views/wiki-about.html`);
 });
 
 module.exports = router;

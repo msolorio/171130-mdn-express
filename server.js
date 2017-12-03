@@ -9,9 +9,14 @@ app.use(logger('dev'));
 // route requests to /wiki to wiki router
 app.use('/wiki', wiki);
 
+// when a request for static assets is made to the root serve public
+app.use(express.static('public'));
+
+// when a request for static assets is made to /wiki serve public
+app.use('/wiki', express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('hello expresso');
+  res.sendFile(`${__dirname}/views/index.html`);
 });
 
 app.listen(3000, () => {
